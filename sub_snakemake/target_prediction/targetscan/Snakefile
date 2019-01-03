@@ -109,12 +109,12 @@ rule targetscan_context_scores:
             eightmer_counts="results/targets/{species}_{tissue}_chr{chrom}_msa.eightmers.tsv",
             contextpp_script="exe/targetscan7/targetscan_70_context_scores.patch.pl",
             agarwal_param="exe/targetscan7/Agarwal_2015_parameters.txt",
-            AIRs="results/targets/{species}_{tissue}.AIRs.txt", #exe/targetscan7/All_cell_lines.AIRs.txt",
+            AIRs="results/targets/{species}_{tissue}_chr{chrom}.AIRs.txt", #exe/targetscan7/All_cell_lines.AIRs.txt",
             TA_SPS_param="exe/targetscan7/TA_SPS_by_seed_region.txt",
             script="exe/targetscan7/targetscan_70_context_scores.patch.pl"
         output:
             "results/targets/{species}_{tissue}_chr{chrom}_msa.contextpp.tsv"
-        conda: "envs/viennaran.yaml" 
+        conda: "envs/viennarna.yaml" 
         params:
             RNAplfold_dir="results/targets/RNAplfold/{species}/{tissue}"
         benchmark:
@@ -149,8 +149,8 @@ rule get_all_transcripts:
 	shell: "awk '{{ print $5}}' {input} | sort | uniq > {output}"
 
 rule get_AIR_file:
-        input: "results/targets/{species}_{tissue}.APA.txt", "results/utrs/{species}_{tissue}.utr.lengths.tsv" #output from APA usage file
-        output: "results/targets/{species}_{tissue}.AIRs.txt"
+        input: "results/targets/{species}_{tissue}_chr{chrom}.APA.txt", "results/utrs/{species}_{tissue}_chr{chrom}.utr.lengths.tsv" #output from APA usage file
+        output: "results/targets/{species}_{tissue}_chr{chrom}.AIRs.txt"
         script: "get_tissue_specific_APA_file.R"
 
 rule fix_targetscan_sites_output:
