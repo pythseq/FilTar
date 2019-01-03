@@ -28,6 +28,7 @@ rule get_gtf_file:
 rule download_fasta:
         input:
         output: "data/{species_prefix}.dna.primary_assembly.fa.gz"
+        params: get_species_synonym
         shell: "rsync -av rsync://ftp.ensembl.org/ensembl/pub/release-94/fasta/{params}/dna/{wildcards.species_prefix}.dna.primary_assembly.fa.gz data/"
 
 rule download_fasta_by_chromosome:
