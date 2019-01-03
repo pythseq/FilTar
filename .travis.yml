@@ -29,7 +29,7 @@ script:
    - cpanm Statistics::Lite
    - Rscript -e 'devtools::install_github("TBradley27/filtar_R")'
    - snakemake --version
-   - travis_wait 23 snakemake data/Mus_musculus.GRCm38.dna.primary_assembly.fa.gz
+   - travis_wait 45 snakemake data/mmu.1.ht2
    - snakemake --use-conda -p results/targets/mmu_liver_chrY_msa.contextpp.tsv
    - head results/targets/mmu_liver_chrY_msa.contextpp.tsv
    #- sed -i "s/no_conservation/with_conservation/" Snakefile
