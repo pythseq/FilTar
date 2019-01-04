@@ -32,7 +32,7 @@ script:
    - cpanm Statistics::Lite
    - Rscript -e 'devtools::install_github("TBradley27/filtar_R")'
    - snakemake --version
-   - travis_wait 70 snakemake --use-conda --cores 2 data/mmu.1.ht2
+   - travis_wait 100 snakemake --use-conda --cores 2 data/mmu.1.ht2
    - travis_wait 50 snakemake --use-conda --cores 2 results/bam/run/SRR652248.sam
    - travis_wait 50 snakemake --use-conda --cores 2 results/bam/run/SRR652248.bam
    - travis_wait 50 snakemake --use-conda --cores 2 results/bam/run/SRR652248.bam.sorted
